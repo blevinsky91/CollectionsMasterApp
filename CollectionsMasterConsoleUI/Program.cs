@@ -80,7 +80,7 @@ namespace CollectionsMasterConsoleUI
 
             //TODO: Print the capacity of the list to the console
 
-            Console.WriteLine(numberList.Capacity);
+            Console.WriteLine(numberList.Count);
 
 
             //TODO: Populate the List with 50 random numbers between 0 and 50 you will need a method for this
@@ -89,7 +89,7 @@ namespace CollectionsMasterConsoleUI
 
             //TODO: Print the new capacity
 
-            Console.WriteLine(numberList.Capacity);
+            Console.WriteLine(numberList.Count);
             
 
             Console.WriteLine("---------------------");
@@ -97,12 +97,13 @@ namespace CollectionsMasterConsoleUI
             //TODO: Create a method that prints if a user number is present in the list
             //Remember: What if the user types "abc" accident your app should handle that!
             Console.WriteLine("What number will you search for in the number list?");
+            var searchNumber = int.Parse(Console.ReadLine());
             
             Console.WriteLine("-------------------");
 
             Console.WriteLine("All Numbers:");
             //UNCOMMENT this method to print out your numbers from arrays or lists
-            //NumberPrinter();
+            NumberPrinter(numberList);
             Console.WriteLine("-------------------");
 
 
@@ -112,12 +113,15 @@ namespace CollectionsMasterConsoleUI
             Console.WriteLine("------------------");
 
             //TODO: Sort the list then print results
+
             Console.WriteLine("Sorted Evens!!");
+            numberList.Sort();
             
             Console.WriteLine("------------------");
 
             //TODO: Convert the list to an array and store that into a variable
-            
+
+            numberList.ToArray();
 
             //TODO: Clear the list
             
@@ -127,7 +131,7 @@ namespace CollectionsMasterConsoleUI
 
         private static void ThreeKiller(int[] numbers)
         {
-            if (numbers % 3 == 0)
+            for (int i = 3; i < numbers.Length; i+=3)
             {
                 Console.WriteLine(numbers);
             }
@@ -135,12 +139,22 @@ namespace CollectionsMasterConsoleUI
 
         private static void OddKiller(List<int> numberList)
         {
+            foreach (int item in numberList)
+            {
+                if (item % 2 != 0)
+                {
+                    numberList.Remove(item);
+                }
+            }
             
         }
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
         {
-            
+            if (searchNumber >= 0 && searchNumber <= 50)
+            {
+                Console.WriteLine(searchNumber);
+            }
         }
 
         private static void Populater(List<int> numberList)
