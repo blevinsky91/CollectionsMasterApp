@@ -180,31 +180,25 @@ namespace CollectionsMasterConsoleUI
         private static void NumberChecker(List<int> numberList, int searchNumber)
         {
             bool foundNumber = false;
-            foreach (var item in numberList)
+            foreach (var item in numberList) 
             {
                 if (item == searchNumber)
                 {
-                    Console.WriteLine($"{searchNumber} is in your list");
+                    //Console.WriteLine($"{searchNumber} is in your list");
                     foundNumber = true;
-                    break;
+                    
                 }
-                else
-                {
-                    Console.WriteLine($"{searchNumber} is not in your list");
-
-                }
-                if (foundNumber == false)
-                {
-                    Console.WriteLine($"{searchNumber} is not in your list");
-                }
+                
             }
+
+            Console.WriteLine(foundNumber ? $"{searchNumber} is in your list" : $"{searchNumber} is not in your list");
         }
 
         private static void Populater(List<int> numberList)
         {
             Random rng = new Random();
             
-            for (int i = 0; i < numberList.Count; i++)
+            for (int i = 0; i < 49; i++)
             {
                 int randomNumber = rng.Next(0, 51);
                 numberList.Add(randomNumber);
